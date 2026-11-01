@@ -1,0 +1,27 @@
+{
+  "model_name": "AgriSense Model 3 Multi-Label Random Forest",
+  "total_crops": 84,
+  "train_samples": 2861,
+  "test_samples": 716,
+  "exact_match_ratio": 0.4818,
+  "micro_f1": 0.9015,
+  "macro_f1": 0.8875,
+  "micro_precision": 0.8497,
+  "micro_recall": 0.9599,
+  "hamming_loss": 0.0226,
+  "zero_crop_accuracy": 1.0,
+  "viability_threshold": 0.28,
+  "feature_columns": [
+    "state_enc",
+    "district_enc",
+    "season_enc",
+    "nitrogen",
+    "phosphorous",
+    "potassium",
+    "ph",
+    "annual_rf",
+    "seasonal_rf",
+    "temp_jan",
+    "temp_jul"
+  ]
+}

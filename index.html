@@ -195,11 +195,71 @@
                     
                             <!-- Mode Toggle -->
                             <div class="mode-toggle">
-                                <button id="mode-npk" class="mode-btn active" type="button">> SCIENTIFIC_MODE (NPK)</button>
-                                <button id="mode-regional" class="mode-btn" type="button">> FARMER_MODE (REGION)</button>
+                                <button id="mode-model3" class="mode-btn active" type="button">> DISTRICT_ADVISOR (MODEL 3)</button>
+                                <button id="mode-npk" class="mode-btn" type="button">> 7-PARAM SCIENTIFIC (MODEL 1)</button>
                             </div>
 
-                            <form id="prediction-form" class="terminal-form mt-4">
+                            <!-- Model 3 District Advisor Form (Active by default) -->
+                            <form id="model3-form" class="terminal-form mt-4">
+                                <div class="terminal-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                                    <div class="t-input-group">
+                                        <label for="m3-state">SELECT_STATE</label>
+                                        <input type="text" id="m3-state" list="m3-states-list" placeholder="e.g. Punjab, Uttar Pradesh" value="Punjab" required class="terminal-input">
+                                        <datalist id="m3-states-list"></datalist>
+                                    </div>
+                                    <div class="t-input-group">
+                                        <label for="m3-district">SELECT_DISTRICT</label>
+                                        <input type="text" id="m3-district" list="m3-districts-list" placeholder="e.g. Ludhiana, Varanasi" value="Ludhiana" required class="terminal-input">
+                                        <datalist id="m3-districts-list"></datalist>
+                                    </div>
+                                    <div class="t-input-group">
+                                        <label for="m3-season">SELECT_SEASON</label>
+                                        <select id="m3-season" class="terminal-input" style="background:#0d1117; color:#58a6ff; border:1px solid #30363d; padding:10px; border-radius:4px; width:100%;" required>
+                                            <option value="Kharif" selected>Kharif (Monsoon / Sowing: Jun-Jul)</option>
+                                            <option value="Rabi">Rabi (Winter / Sowing: Oct-Nov)</option>
+                                            <option value="Summer">Summer / Zaid (Pre-Monsoon: Mar-Jun)</option>
+                                            <option value="Whole Year">Whole Year (Perennial / Cash Crops)</option>
+                                            <option value="Autumn">Autumn (Early Pre-Monsoon)</option>
+                                            <option value="Winter">Winter (Late Winter Cycle)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Optional Soil Health Toggle -->
+                                <details style="margin: 15px 0; color: #8b949e; font-size: 0.85rem; cursor: pointer;">
+                                    <summary style="outline: none; color: #58a6ff; font-family: 'JetBrains Mono', monospace;">
+                                        [+] OPTIONAL: CUSTOM SOIL TEST VALUES (Leave blank to use ICAR District Medians)
+                                    </summary>
+                                    <div class="terminal-grid mt-3" style="grid-template-columns: repeat(4, 1fr);">
+                                        <div class="t-input-group">
+                                            <label>NITROGEN [kg/ha]</label>
+                                            <input type="number" step="1" id="m3-n" placeholder="Auto ICAR" class="terminal-input">
+                                        </div>
+                                        <div class="t-input-group">
+                                            <label>PHOSPHORUS [kg/ha]</label>
+                                            <input type="number" step="1" id="m3-p" placeholder="Auto ICAR" class="terminal-input">
+                                        </div>
+                                        <div class="t-input-group">
+                                            <label>POTASSIUM [kg/ha]</label>
+                                            <input type="number" step="1" id="m3-k" placeholder="Auto ICAR" class="terminal-input">
+                                        </div>
+                                        <div class="t-input-group">
+                                            <label>SOIL PH [0-14]</label>
+                                            <input type="number" step="0.1" id="m3-ph" placeholder="Auto ICAR" class="terminal-input">
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <div style="display: flex; gap: 10px; align-items: center; margin-top: 15px;">
+                                    <button type="submit" class="terminal-btn" id="submit-m3-btn" style="flex: 1;">> EXECUTE district_crop_advisor.exe (MODEL 3)</button>
+                                </div>
+                                <div style="font-size: 0.75rem; color: #8b949e; margin-top: 8px; font-family: 'JetBrains Mono', monospace;">
+                                    * Automatically fetches live Open-Meteo telemetry, upcoming 7-day weather forecast, and IMD historical normals.
+                                </div>
+                            </form>
+
+                            <!-- 7-Param NPK Form (Hidden by default) -->
+                            <form id="prediction-form" class="terminal-form mt-4" style="display: none;">
                                 <div class="terminal-grid">
                                     <div class="t-input-group">
                                         <label>NITROGEN [Ratio]</label>
@@ -227,23 +287,10 @@
                                     </div>
                                     <div class="t-input-group">
                                         <label for="rainfall" class="terminal-prompt">INPUT_RAINFALL [mm]</label>
-                                        <input type="number" step="0.1" min="0" max="1000" id="rainfall" placeholder="e.g. 20 - 300 mm" required class="terminal-input">
+                                        <input type="number" step="0.1" min="0" max="1000" id="rainfall" placeholder="e.g. 20 - 300 mm" value="202.9" required class="terminal-input">
                                     </div>
                                 </div>
-                                <button type="submit" class="terminal-btn" id="submit-btn">> EXECUTE inference_engine.exe</button>
-                            </form>
-
-                            <!-- Regional Form (Hidden by default) -->
-                            <form id="regional-form" class="terminal-form" style="display: none;">
-                                <div class="form-group">
-                                    <label for="state" class="terminal-prompt">INPUT_STATE</label>
-                                    <input type="text" id="state" placeholder="e.g., Uttar Pradesh" required class="terminal-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="district" class="terminal-prompt">INPUT_DISTRICT</label>
-                                    <input type="text" id="district" placeholder="e.g., Agra" required class="terminal-input">
-                                </div>
-                                <button type="submit" class="terminal-btn" id="submit-regional-btn">> EXECUTE regional_inference.exe</button>
+                                <button type="submit" class="terminal-btn" id="submit-btn">> EXECUTE 7_param_inference.exe</button>
                             </form>
 
                             <div id="loading" class="terminal-loading" style="display: none;"></div>

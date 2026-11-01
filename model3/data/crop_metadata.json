@@ -1,0 +1,422 @@
+{
+  "BRINJAL": {
+    "crop_name": "Brinjal",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "TAPIOCA": {
+    "crop_name": "Tapioca",
+    "category": "FIELD CROP",
+    "water_requirement": "HIGH"
+  },
+  "CITRUS FRUIT": {
+    "crop_name": "Citrus Fruit",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "OTHER VEGETABLES": {
+    "crop_name": "Other Vegetables",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "MASOOR": {
+    "crop_name": "Masoor",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "GUAR SEED": {
+    "crop_name": "Guar Seed",
+    "category": "COMMERCIAL",
+    "water_requirement": "LOW"
+  },
+  "BANANA": {
+    "crop_name": "Banana",
+    "category": "FRUIT",
+    "water_requirement": "HIGH"
+  },
+  "SUGARCANE": {
+    "crop_name": "Sugarcane",
+    "category": "COMMERCIAL",
+    "water_requirement": "HIGH"
+  },
+  "CUCUMBER": {
+    "crop_name": "Cucumber",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "POME GRANET": {
+    "crop_name": "Pome Granet",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "TEA": {
+    "crop_name": "Tea",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "REDISH": {
+    "crop_name": "Redish",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "JOWAR": {
+    "crop_name": "Jowar",
+    "category": "CEREAL",
+    "water_requirement": "LOW"
+  },
+  "CARDAMOM": {
+    "crop_name": "Cardamom",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "WHEAT": {
+    "crop_name": "Wheat",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "BOTTLE GOURD": {
+    "crop_name": "Bottle Gourd",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "GRAPES": {
+    "crop_name": "Grapes",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "WATER MELON": {
+    "crop_name": "Water Melon",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "BARLEY": {
+    "crop_name": "Barley",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "GRAM": {
+    "crop_name": "Gram",
+    "category": "PULSE",
+    "water_requirement": "LOW"
+  },
+  "CORIANDER": {
+    "crop_name": "Coriander",
+    "category": "SPICE",
+    "water_requirement": "MEDIUM"
+  },
+  "OTHER FRESH FRUITS": {
+    "crop_name": "Other Fresh Fruits",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "BAJRA": {
+    "crop_name": "Bajra",
+    "category": "CEREAL",
+    "water_requirement": "LOW"
+  },
+  "RICE": {
+    "crop_name": "Rice",
+    "category": "CEREAL",
+    "water_requirement": "HIGH"
+  },
+  "SESAMUM": {
+    "crop_name": "Sesamum",
+    "category": "OILSEED",
+    "water_requirement": "LOW"
+  },
+  "KORRA": {
+    "crop_name": "Korra",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "RAPESEED &MUSTARD": {
+    "crop_name": "Rapeseed &Mustard",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "PADDY": {
+    "crop_name": "Paddy",
+    "category": "CEREAL",
+    "water_requirement": "HIGH"
+  },
+  "POTATO": {
+    "crop_name": "Potato",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "ARECANUT": {
+    "crop_name": "Arecanut",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "SAMAI": {
+    "crop_name": "Samai",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "ONION": {
+    "crop_name": "Onion",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "TOMATO": {
+    "crop_name": "Tomato",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "SNAK GUARD": {
+    "crop_name": "Snak Guard",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "BEANS & MUTTER(VEGETABLE)": {
+    "crop_name": "Beans & Mutter(Vegetable)",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "OTHER CITRUS FRUIT": {
+    "crop_name": "Other Citrus Fruit",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "OTHER  RABI PULSES": {
+    "crop_name": "Other  Rabi Pulses",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "CAULIFLOWER": {
+    "crop_name": "Cauliflower",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "CASHEWNUT": {
+    "crop_name": "Cashewnut",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "CABBAGE": {
+    "crop_name": "Cabbage",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "SUNFLOWER": {
+    "crop_name": "Sunflower",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "BLACKGRAM": {
+    "crop_name": "Blackgram",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "LINSEED": {
+    "crop_name": "Linseed",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "POME FRUIT": {
+    "crop_name": "Pome Fruit",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "PEAS & BEANS (PULSES)": {
+    "crop_name": "Peas & Beans (Pulses)",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "SANNHAMP": {
+    "crop_name": "Sannhamp",
+    "category": "COMMERCIAL",
+    "water_requirement": "MEDIUM"
+  },
+  "SAFFLOWER": {
+    "crop_name": "Safflower",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "RAGI": {
+    "crop_name": "Ragi",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "COTTON(LINT)": {
+    "crop_name": "Cotton(Lint)",
+    "category": "COMMERCIAL",
+    "water_requirement": "MEDIUM"
+  },
+  "COCONUT": {
+    "crop_name": "Coconut",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "PINEAPPLE": {
+    "crop_name": "Pineapple",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "GINGER": {
+    "crop_name": "Ginger",
+    "category": "SPICE",
+    "water_requirement": "MEDIUM"
+  },
+  "GARLIC": {
+    "crop_name": "Garlic",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "DRY GINGER": {
+    "crop_name": "Dry Ginger",
+    "category": "SPICE",
+    "water_requirement": "MEDIUM"
+  },
+  "MAIZE": {
+    "crop_name": "Maize",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "ARHAR/TUR": {
+    "crop_name": "Arhar/Tur",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "MANGO": {
+    "crop_name": "Mango",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "MOONG(GREEN GRAM)": {
+    "crop_name": "Moong(Green Gram)",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "GROUNDNUT": {
+    "crop_name": "Groundnut",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "OTHER KHARIF PULSES": {
+    "crop_name": "Other Kharif Pulses",
+    "category": "FIELD CROP",
+    "water_requirement": "MEDIUM"
+  },
+  "HORSE-GRAM": {
+    "crop_name": "Horse-Gram",
+    "category": "PULSE",
+    "water_requirement": "LOW"
+  },
+  "TOBACCO": {
+    "crop_name": "Tobacco",
+    "category": "COMMERCIAL",
+    "water_requirement": "MEDIUM"
+  },
+  "JACK FRUIT": {
+    "crop_name": "Jack Fruit",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "BLACK PEPPER": {
+    "crop_name": "Black Pepper",
+    "category": "PLANTATION",
+    "water_requirement": "MEDIUM"
+  },
+  "PAPAYA": {
+    "crop_name": "Papaya",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "NIGER SEED": {
+    "crop_name": "Niger Seed",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "KHESARI": {
+    "crop_name": "Khesari",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "ORANGE": {
+    "crop_name": "Orange",
+    "category": "FRUIT",
+    "water_requirement": "MEDIUM"
+  },
+  "DRUM STICK": {
+    "crop_name": "Drum Stick",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "DRY CHILLIES": {
+    "crop_name": "Dry Chillies",
+    "category": "SPICE",
+    "water_requirement": "MEDIUM"
+  },
+  "SWEET POTATO": {
+    "crop_name": "Sweet Potato",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "SMALL MILLETS": {
+    "crop_name": "Small Millets",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "SOYABEAN": {
+    "crop_name": "Soyabean",
+    "category": "OILSEED",
+    "water_requirement": "MEDIUM"
+  },
+  "BITTER GOURD": {
+    "crop_name": "Bitter Gourd",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "JUTE": {
+    "crop_name": "Jute",
+    "category": "COMMERCIAL",
+    "water_requirement": "HIGH"
+  },
+  "TURMERIC": {
+    "crop_name": "Turmeric",
+    "category": "SPICE",
+    "water_requirement": "MEDIUM"
+  },
+  "COWPEA(LOBIA)": {
+    "crop_name": "Cowpea(Lobia)",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "MOTH": {
+    "crop_name": "Moth",
+    "category": "PULSE",
+    "water_requirement": "LOW"
+  },
+  "BHINDI": {
+    "crop_name": "Bhindi",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "PUMP KIN": {
+    "crop_name": "Pump Kin",
+    "category": "VEGETABLE",
+    "water_requirement": "MEDIUM"
+  },
+  "MESTA": {
+    "crop_name": "Mesta",
+    "category": "COMMERCIAL",
+    "water_requirement": "MEDIUM"
+  },
+  "VARAGU": {
+    "crop_name": "Varagu",
+    "category": "CEREAL",
+    "water_requirement": "MEDIUM"
+  },
+  "URAD": {
+    "crop_name": "Urad",
+    "category": "PULSE",
+    "water_requirement": "MEDIUM"
+  },
+  "CASTOR SEED": {
+    "crop_name": "Castor Seed",
+    "category": "OILSEED",
+    "water_requirement": "LOW"
+  }
+}

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 from fastapi import FastAPI, Request
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -290,3 +291,61 @@ async def explain_plots(inputs: ExplainInputs):
     except Exception as e:
         print(f"Explain Plots Error: {e}")
         return {"shap_base64": None, "lime_base64": None}
+
+
+# =====================================================================
+# MODEL 3: DISTRICT-AWARE MULTI-LABEL ENGINE WITH LIVE/UPCOMING WEATHER
+# =====================================================================
+from model3.src.recommender import recommend_district_crops
+
+class Model3DistrictInputs(BaseModel):
+    state: str
+    district: str
+    season: str
+    nitrogen: Optional[float] = None
+    phosphorous: Optional[float] = None
+    potassium: Optional[float] = None
+    ph: Optional[float] = None
+
+@app.get("/api/v3/states_districts")
+async def get_states_districts():
+    """Returns mapping of all 33 Indian States and their districts."""
+    import json
+    data_path = os.path.join(os.path.dirname(__file__), "model3", "data", "states_districts.json")
+    if os.path.exists(data_path):
+        with open(data_path, "r") as f:
+            return json.load(f)
+    return {}
+
+@app.post("/api/v3/recommend_district_crops")
+@app.post("/predict_model3/")
+async def predict_model3(inputs: Model3DistrictInputs):
+    """
+    Model 3 District-Wise Crop Advisor:
+    - Automatically fetches current live weather, 7-day upcoming forecast, and IMD normals.
+    - If crops are possible: returns ALL possible crops ranked by suitability confidence.
+    - If not possible: returns status 'NO_CROPS_POSSIBLE' with descriptive agronomic reason.
+    """
+    try:
+        custom_soil = None
+        if (inputs.nitrogen is not None and inputs.nitrogen > 0) or \
+           (inputs.phosphorous is not None and inputs.phosphorous > 0) or \
+           (inputs.potassium is not None and inputs.potassium > 0) or \
+           (inputs.ph is not None and inputs.ph > 0):
+            custom_soil = {
+                "nitrogen": inputs.nitrogen or 60.0,
+                "phosphorous": inputs.phosphorous or 45.0,
+                "potassium": inputs.potassium or 45.0,
+                "ph": inputs.ph or 6.5
+            }
+            
+        result = recommend_district_crops(
+            state=inputs.state,
+            district=inputs.district,
+            season=inputs.season,
+            custom_soil=custom_soil
+        )
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Model 3 Recommendation Error: {str(e)}")
+
