@@ -93,9 +93,30 @@ While multi-label classification is widely deployed in text categorization, bioi
 
 ---
 
-### 2.4 Systematic Literature Gap Matrix
+### 2.4 Comprehensive Literature Review of Contemporary Systems
 
-Table 1 presents a systematic comparative analysis contrasting AgriSense 3.0 against leading contemporary crop recommendation frameworks.
+Table 1 provides an exhaustive literature synthesis of key published works in agricultural crop recommendation, contrasting their algorithmic paradigms, feature requirements, output spaces, and critical research deficiencies.
+
+#### 📊 Table 1: Comprehensive Literature Review of State-of-the-Art Crop Recommendation Systems
+
+| Study / Reference | Methodology & Algorithms | Dataset & Scale | Input Features Required | Output Space & Paradigm | Key Reported Metrics | Primary Agronomic & Technical Limitations |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Patel et al. (2020)** \cite{patel2020crop} | Random Forest, SVM, Naive Bayes, Decision Trees | 2,200 synthetic observations | 7 physicochemical parameters ($N, P, K, pH, T, RH, R$) | 22 crops, Single-Label multiclass ($\operatorname{argmax}$) | 99.2% Accuracy (RF) | Monoculture bias ($\operatorname{argmax}$); heavy farmer sensor burden; lacks rejection boundary for off-season fallows. |
+| **Kumar et al. (2021)** \cite{kumar2021machine} | Gradient Boosting (XGBoost), CART, Linear Regression | Regional state-level agricultural data | Soil nutrients and static annual seasonal rainfall | 22 crops, Single-Label multiclass | 96.4% Accuracy (XGB) | Uncalibrated probabilities; zero-crop rejection absent; static historical averages ignore real-time weather shocks. |
+| **Koksal & Tekinerdogan (2020)** \cite{koksal2020crop} | Rule-Based Expert Systems & Cloud IoT Pipelines | Micro-plot agricultural testbed | In-situ soil moisture, ambient humidity, temperature | 8 crops, Rule-based deterministic selection | 88.5% Recommendation Match | High capital and maintenance costs for hardware sensor probes; rigid deterministic rules without ML generalization. |
+| **Rao et al. (2022)** \cite{rao2022iot} | Random Forest with Wireless Sensor Telemetry | Farm-level IoT station (1 micro-plot) | Real-time dielectric soil moisture, air temperature | 12 crops, Single-Label multiclass | 94.8% Accuracy | Geographically bound to 1 micro-plot; high hardware maintenance; assumes single winner crop; no national spatial scaling. |
+| **Sharma et al. (2023)** \cite{sharma2023deep} | Deep Artificial Neural Networks (ANN), 1D CNN | Multi-regional agricultural benchmark | 10 edaphic and weather variables | 20 crops, Multiclass Softmax | 95.1% Accuracy | High computational latency ($>120\text{ ms}$); opaque black-box architecture; prone to overfitting on small tabular datasets. |
+| **Singh et al. (2023)** \cite{singh2022crop} | Multi-Criteria Decision Making (AHP, TOPSIS) & API Telemetry | Regional weather API + District records | Live temperature, humidity, rainfall normals | 10 commercial crops, Multi-attribute ranking | Top-3 Crop Suitability Ranking | Subjective weight assignment in AHP; lacks machine learning training on historical crop yields; no negative strata learning. |
+| **Mishra (First Paper, 2026)** \cite{mishra2026explainable} | 10 ML Classifiers + XAI (SHAP & LIME Interpretability) | 2,200 balanced Kaggle samples | 7 physicochemical parameters ($N, P, K, pH, T, RH, R$) | 22 crops, Single-Label multiclass | 99.77% Accuracy (RF) | Idealized synthetic dataset; assumes smallholder possesses IoT probes; lacks multi-label portfolio and zero-crop rejection gate. |
+| **AgriSense 3.0 (Proposed Work)** | **District-Stratified Multi-Output Random Forest Ensemble** | **242,361 DES/ICRISAT records across 652 districts** | **Administrative entry ($\text{State, Dist, Season}$) + Auto Open-Meteo REST + ICAR Medians** | **84 varieties (98.9% national production), Multi-Label Portfolio** | **90.15% Micro F1, 98.11% Hamming Acc, 100% Zero-Crop Rejection** | **Solves multiclass fallacy, eliminates sensor burden, rejects impossible farming regimes via calibrated feasibility gate with sub-10 ms latency.** |
+
+---
+
+### 2.5 Systematic Research Gap Matrix
+
+Table 2 contrasts AgriSense 3.0 against leading contemporary frameworks across seven fundamental technical dimensions.
+
+#### 📊 Table 2: Systematic Comparative Analysis of AgriSense 3.0 Against Existing Literature
 
 | Metric / Dimension | Patel et al. (2020) | Kumar et al. (2021) | Rao et al. (2022) | Sharma et al. (2023) | Mishra (First Paper, 2026) | **AgriSense 3.0 (Proposed)** |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -363,7 +384,9 @@ Multi-label learning cannot be characterized by a single scalar accuracy score. 
 
 ### 7.3 Multi-Model Benchmark Results
 
-Table 2 presents the complete benchmark results across the five evaluated machine learning architectures on the identical holdout test set ($N=716$).
+Table 3 presents the complete benchmark results across the five evaluated machine learning architectures on the identical holdout test set ($N=716$).
+
+#### 📊 Table 3: Comprehensive Benchmark Evaluation Across Five Candidate Machine Learning Algorithms
 
 | Model Name | Micro F1 (%) | Jaccard IoU (%) | Hamming Acc (%) | Micro Recall (%) | Micro Precision (%) | Zero-Crop Rej (%) | Exact Match (%) | Training Latency (s) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |

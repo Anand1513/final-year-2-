@@ -95,6 +95,35 @@ Multi-label classification deals with instances that can simultaneously belong t
 
 \begin{table*}[t]
 \centering
+\caption{Comprehensive Literature Review of State-of-the-Art Crop Recommendation Systems}
+\label{tab:lit_review}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{2.8cm}p{3.2cm}p{2.5cm}p{3.0cm}p{2.6cm}p{2.2cm}p{4.2cm}}
+\toprule
+\textbf{Study / Reference} & \textbf{Methodology \& Algorithms} & \textbf{Dataset \& Scale} & \textbf{Input Features Required} & \textbf{Output Space \& Paradigm} & \textbf{Key Reported Metrics} & \textbf{Primary Agronomic \& Technical Limitations} \\
+\midrule
+Patel et al. (2020)~\cite{patel2020crop} & Random Forest, SVM, Naive Bayes, Decision Trees & 2,200 synthetic observations & 7 physicochemical parameters ($N, P, K, pH, T, RH, R$) & 22 crops, Single-Label multiclass ($\operatorname{argmax}$) & 99.2\% Accuracy (RF) & Monoculture bias ($\operatorname{argmax}$); heavy farmer sensor burden; lacks rejection boundary for off-season fallows. \\
+\addlinespace
+Kumar et al. (2021)~\cite{kumar2021machine} & Gradient Boosting (XGBoost), CART, Linear Regression & Regional state-level agricultural data & Soil nutrients and static annual seasonal rainfall & 22 crops, Single-Label multiclass & 96.4\% Accuracy (XGB) & Uncalibrated probabilities; zero-crop rejection absent; static historical averages ignore real-time weather shocks. \\
+\addlinespace
+Koksal \& Tekinerdogan (2020)~\cite{koksal2020crop} & Rule-Based Expert Systems \& Cloud IoT Pipelines & Micro-plot agricultural testbed & In-situ soil moisture, ambient humidity, temperature & 8 crops, Rule-based deterministic selection & 88.5\% Recommendation Match & High capital and maintenance costs for hardware sensor probes; rigid deterministic rules without ML generalization. \\
+\addlinespace
+Rao et al. (2022)~\cite{rao2022iot} & Random Forest with Wireless Sensor Telemetry & Farm-level IoT station (1 micro-plot) & Real-time dielectric soil moisture, air temperature & 12 crops, Single-Label multiclass & 94.8\% Accuracy & Geographically bound to 1 micro-plot; high hardware maintenance; assumes single winner crop; no national spatial scaling. \\
+\addlinespace
+Sharma et al. (2023)~\cite{sharma2023deep} & Deep Artificial Neural Networks (ANN), 1D CNN & Multi-regional agricultural benchmark & 10 edaphic and weather variables & 20 crops, Multiclass Softmax & 95.1\% Accuracy & High computational latency ($>120$ ms); opaque black-box architecture; prone to overfitting on small tabular datasets. \\
+\addlinespace
+Singh et al. (2023)~\cite{singh2022crop} & Multi-Criteria Decision Making (AHP, TOPSIS) \& API Telemetry & Regional weather API + District records & Live temperature, humidity, rainfall normals & 10 commercial crops, Multi-attribute ranking & Top-3 Crop Suitability Ranking & Subjective weight assignment in AHP; lacks machine learning training on historical crop yields; no negative strata learning. \\
+\addlinespace
+Mishra (First Paper, 2026)~\cite{mishra2026explainable} & 10 ML Classifiers + XAI (SHAP \& LIME Interpretability) & 2,200 balanced Kaggle samples & 7 physicochemical parameters ($N, P, K, pH, T, RH, R$) & 22 crops, Single-Label multiclass & 99.77\% Accuracy (RF) & Idealized synthetic dataset; assumes smallholder possesses IoT probes; lacks multi-label portfolio and zero-crop rejection gate. \\
+\addlinespace
+\textbf{AgriSense 3.0 (Proposed)} & \textbf{District-Stratified Multi-Output Random Forest Ensemble} & \textbf{242,361 DES/ICRISAT records across 652 districts} & \textbf{Administrative entry ($\text{State, Dist, Season}$) + Auto Open-Meteo REST + ICAR Medians} & \textbf{84 varieties (98.9\% national production), Multi-Label Portfolio} & \textbf{90.15\% Micro F1, 98.11\% Hamming Acc, 100\% Zero-Crop Rej.} & \textbf{Solves multiclass fallacy, eliminates sensor burden, rejects impossible farming regimes via calibrated feasibility gate with sub-10 ms latency.} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+\begin{table*}[t]
+\centering
 \caption{Systematic Literature Gap Matrix Comparing AgriSense 3.0 with Contemporary Works}
 \label{tab:lit_gap}
 \begin{tabular}{lcccccc}
