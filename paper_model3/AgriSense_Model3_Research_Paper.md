@@ -21,6 +21,27 @@ Suitability is formulated as an 84-dimensional multi-label classification task c
 
 ---
 
+## 📌 Master Index of Research Diagrams & Resume Highlights
+
+### 📋 Complete List of Figures & Diagrams in this Paper:
+* **[Figure 1](#️-figure-1-end-to-end-agrisense-30-system-architecture--multi-horizon-data-flow):** *End-to-End AgriSense 3.0 System Architecture & Multi-Horizon Data Flow*
+* **[Figure 2](#️-figure-2-empirical-crop-diversity-distribution-across-indian-district-season-strata):** *Empirical Crop Diversity Distribution across Indian District-Season Strata*
+* **[Figure 3](#️-figure-3-frequency-distribution-and-class-representation-across-top-25-agricultural-crops):** *Frequency Distribution and Class Representation across Top 25 Agricultural Crops*
+* **[Figure 4](#️-figure-4-automated-multi-horizon-weather-telemetry-and-7-day-prospective-forecast-ingestion):** *Automated Multi-Horizon Weather Telemetry and 7-Day Prospective Forecast Ingestion*
+* **[Figure 5](#️-figure-5-decision-threshold-optimization-and-precision-recall-harmonic-convergence-curve-tau--028):** *Decision Threshold Optimization and Precision-Recall Harmonic Convergence Curve ($\tau = 0.28$)*
+* **[Figure 6](#️-figure-6-random-forest-gini-feature-importance-attribution-across-11-agronomic-and-meteorological-dimensions):** *Random Forest Gini Feature Importance Attribution across 11 Agronomic Dimensions*
+* **[Figure 7](#️-figure-7-multi-model-performance-benchmark-across-five-candidate-machine-learning-algorithms):** *Multi-Model Performance Benchmark across Five Candidate Machine Learning Algorithms*
+* **[Figure 8](#️-figure-8-champion-random-forest-multi-label-performance-metric-hierarchy):** *Champion Random Forest Multi-Label Performance Metric Hierarchy*
+
+### 💼 Bullet-Ready Resume Highlights (Copy-Paste for CV / Applications):
+> - **Architected AgriSense 3.0**, a district-stratified multi-label ML framework recommending diversified crop portfolios across **84 varieties** representing **98.9% of Indian national production** (242k+ historical records across 652 districts).
+> - **Engineered an Automated Tri-Tier Weather Telemetry Engine** querying Open-Meteo REST APIs asynchronously to ingest real-time weather and 7-day prospective forecasts, eliminating physical IoT sensor dependency.
+> - **Developed an Agronomic Feasibility Gate & Rejection Boundary** with 1,005 synthesized negative strata, achieving **100.00% Zero-Crop Infeasibility Rejection Accuracy** under permafrost and heatwave regimes.
+> - **Benchmarked 5 ML Algorithms** (Random Forest, Extra Trees, Decision Trees, KNN, Logistic Regression); optimized multi-label Random Forest to achieve **90.15% Micro F1**, **98.11% Hamming Accuracy**, **89.21% Jaccard IoU**, and **95.99% Micro Recall**.
+> - **Deployed Production REST API with FastAPI**, achieving **$<10\text{ ms}$ inference latency** via indexed $O(1)$ spatial JSON databases, integrated with responsive web UI.
+
+---
+
 ## 1. Introduction
 
 Agriculture remains the economic foundation of developing nations. In India, it sustains over 58% of rural livelihoods and accounts for substantial shares of gross value added. However, smallholder farmers—who operate on landholdings under two hectares—face escalating vulnerabilities driven by climate change, erratic monsoon distributions, land fragmentation, and volatile commodity markets. Suboptimal crop selection remains a primary driver of agricultural debt and catastrophic yield failure. Selecting an unsuitable cultivar not only leads to wasted seed capital and fertilizer expenditure but also exacerbates regional groundwater depletion and soil nutrient exhaustion.
@@ -93,6 +114,7 @@ Table 1 presents a systematic comparative analysis contrasting AgriSense 3.0 aga
 
 The architectural design of AgriSense 3.0 follows a decoupled, resilient multi-tier pipeline organized into four functional layers: (1) Client & Administrative Tier, (2) Geospatial & Meteorological Orchestration Engine, (3) Agronomic Feasibility & Multi-Label Inference Tier, and (4) Diagnostic Presentation Tier.
 
+### 🖼️ Figure 1: End-to-End AgriSense 3.0 System Architecture & Multi-Horizon Data Flow
 ```
 +---------------------------------------------------------------------------------------------------+
 |                                  AGRISENSE 3.0 SYSTEM ARCHITECTURE                                |
@@ -141,6 +163,30 @@ The architectural design of AgriSense 3.0 follows a decoupled, resilient multi-t
    - Enriched Agronomic Tags: Category (Cereal/Pulse/Oilseed/Commercial) & Water Need
    - Live Weather & 7-Day Forecast Intelligence Card
 ```
+*Caption: Figure 1 illustrates the end-to-end data orchestration pipeline of AgriSense 3.0, showing automated ingestion of Open-Meteo real-time telemetry, ICAR edaphic baselines, the Agronomic Feasibility Gate, and multi-label inference across 84 crop classes.*
+         |
+         +---> FAIL ---> Output: STATUS: NO_CROPS_POSSIBLE (Scientific Agronomic Reason)
+         |
+         v PASS
+ [MULTI-LABEL INFERENCE ENGINE]
+   11-Dimensional Feature Vector:
+   [State, Dist, Season, N, P, K, pH, Annual_RF, Seasonal_RF, T_Jan, T_Jul]
+         |
+         v
+   Calibrated Multi-Output Random Forest Ensemble (100 Trees)
+         |
+         v
+   Posterior Probabilities across 84 Crops: p_c >= 0.28 (Viability Threshold)
+         |
+         +---> ALL p_c < 0.28 ---> Output: STATUS: NO_CROPS_POSSIBLE
+         |
+         v AT LEAST ONE p_c >= 0.28
+ [PRESENTATION TIER]
+   Output: STATUS: CROPS_AVAILABLE
+   - Ranked Viable Portfolio with Suitability %
+   - Enriched Agronomic Tags: Category (Cereal/Pulse/Oilseed/Commercial) & Water Need
+   - Live Weather & 7-Day Forecast Intelligence Card
+```
 
 ### 3.1 Provenance of Nationwide Government Datasets
 To ground the machine learning models in genuine agricultural realities, AgriSense 3.0 synthesizes data from four authoritative public repositories:
@@ -149,6 +195,14 @@ To ground the machine learning models in genuine agricultural realities, AgriSen
 2. **ICAR National Soil Health Card Scheme Portal:** A 1.1 GB repository containing millions of geo-referenced soil test samples collected at block and village levels. For each of India's 652 administrative districts, we extracted the non-parametric median values of Available Nitrogen ($N$, kg/ha), Available Phosphorus ($P$, kg/ha), Available Potassium ($K$, kg/ha), and Soil Reaction ($pH$).
 3. **India Meteorological Department (IMD) 50-Year Climate Normals (1951–2000):** Comprehensive meteorological monographs documenting monthly and seasonal precipitation normals across 641 administrative districts.
 4. **Survey of India & Planning Commission Agro-Climatic Regions:** GIS spatial boundary shapefiles partitioning India into 15 Agro-Climatic Zones, providing baseline mean January temperatures ($T_{\text{jan}}$) and mean July temperatures ($T_{\text{jul}}$).
+
+### 🖼️ Figure 2: Empirical Crop Diversity Distribution across Indian District-Season Strata
+![Figure 2: Empirical Crop Diversity Distribution](figures/fig1_crop_diversity_distribution.png)
+*Caption: Figure 2 depicts the statistical distribution of concurrent crop varieties per district-season stratum nationwide. The empirical mean of 11.4 simultaneous crops confirms that agriculture operates as a diversified multi-crop portfolio, demonstrating the invalidity of single-label multiclass argmax formulations.*
+
+### 🖼️ Figure 3: Frequency Distribution and Class Representation across Top 25 Agricultural Crops
+![Figure 3: Top 25 Crops Frequency Distribution](figures/fig2_top25_crops_frequency.png)
+*Caption: Figure 3 presents the occurrence frequency of the top 25 agricultural crops in the national dataset, highlighting the severe class imbalance between staple cereals (Rice, Wheat, Maize) and regional pulses/oilseeds that necessitates macro-averaging and calibrated thresholding.*
 
 ### 3.2 Spatial Data Cleansing & Text Range Disambiguation
 Raw government shapefiles often encode temperature normals as unstructured textual ranges (e.g., `"05 °C To 22 °C"` or `"Below 10 °C"`). Prior implementations often failed to parse these strings, resulting in missing values that were coerced to invalid values (such as $-1$). We engineered a deterministic regex parser:
@@ -200,6 +254,10 @@ Rather than relying on static annual averages or expensive local sensors, AgriSe
 | Agronomic Purpose: Long-term macro-climatic suitability and water budget matching.    |
 +---------------------------------------------------------------------------------------+
 ```
+
+### 🖼️ Figure 4: Automated Multi-Horizon Weather Telemetry and 7-Day Prospective Forecast Ingestion
+![Figure 4: Multi-Horizon Weather Telemetry and 7-Day Forecast](figures/fig7_prospective_weather_forecast.png)
+*Caption: Figure 4 illustrates the tri-tier prospective meteorological telemetry service. The dual-axis visualization tracks daily maximum/minimum temperatures and expected precipitation probabilities over a 7-day prospective window, enabling informed seed sowing decisions.*
 
 ### 4.2 Latency and Fault Tolerance Optimization
 To satisfy real-world deployment constraints:
@@ -260,12 +318,19 @@ We conducted an exhaustive empirical benchmark comparing **five diverse machine 
 5. **Logistic Regression (OvR):** Linear baseline utilizing L2 regularization and One-vs-Rest decomposition.
 
 ### 6.3 Threshold Calibration Analysis
-Figure 5 illustrates the threshold calibration curve evaluated on the holdout validation split across thresholds $\tau \in [0.10, 0.60]$. The standard default threshold ($\tau = 0.50$) produces excessive false negatives in multi-label agricultural portfolios, penalizing viable secondary crops. Conversely, very low thresholds ($\tau < 0.20$) induce excessive false positives. 
+The standard default decision threshold ($\tau = 0.50$) produces excessive false negatives in multi-label agricultural portfolios, heavily penalizing viable secondary crops. Conversely, very low thresholds ($\tau < 0.20$) induce excessive false positives.
 
-At the calibrated threshold of **$\tau = 0.28$**, the model achieves the optimal harmonic balance between Micro Recall (95.99%) and Micro Precision (84.97%), yielding a peak **Micro F1-Score of 90.15%**.
+### 🖼️ Figure 5: Decision Threshold Optimization and Precision-Recall Harmonic Convergence Curve ($\tau = 0.28$)
+![Figure 5: Decision Threshold Optimization Curve](figures/fig5_threshold_optimization_curve.png)
+*Caption: Figure 5 illustrates the decision threshold calibration curve evaluated on the holdout validation split across thresholds $\tau \in [0.10, 0.60]$. At the empirically calibrated threshold of $\tau = 0.28$, the ensemble achieves optimal harmonic convergence between Micro Recall (95.99%) and Micro Precision (84.97%), yielding a peak Micro F1-Score of 90.15%.*
 
 ### 6.4 Feature Importance Attribution
-Figure 6 presents the Gini feature importance ranking computed across the 100 trees of the champion Random Forest ensemble. The ranking reveals:
+
+### 🖼️ Figure 6: Random Forest Gini Feature Importance Attribution across 11 Agronomic and Meteorological Dimensions
+![Figure 6: Gini Feature Importance Ranking](figures/fig6_feature_importance_ranking.png)
+*Caption: Figure 6 presents the relative Gini feature importance ranking computed across the 100 constituent trees of the champion Random Forest ensemble. Geographic district and state encodings alongside IMD seasonal rainfall normals constitute over 61% of total split importance.*
+
+The ranking reveals:
 1. **Administrative & Spatial Indices (`district_enc`, `state_enc`):** Account for 34.2% of total Gini reduction, reflecting the decisive role of localized agricultural infrastructure and historical agronomic zoning.
 2. **Climatological Rainfall (`seasonal_rf`, `annual_rf`):** Account for 26.8% of importance, governing irrigation feasibility and water-table replenishment.
 3. **Soil Macronutrients (`potassium`, `nitrogen`, `ph`, `phosphorous`):** Account for 24.1%, dictating physiological plant nutrition and fertilizer compatibility.
@@ -308,9 +373,17 @@ Table 2 presents the complete benchmark results across the five evaluated machin
 | **K-Nearest Neighbors ($k=5$)** | 58.89 | 53.83 | 89.95 | 66.74 | 52.69 | 86.80 | 24.86 | 0.01 |
 | **Logistic Regression (OvR)** | 30.18 | 30.33 | 89.75 | 20.54 | 56.90 | 64.97 | 18.02 | 3.61 |
 
+### 🖼️ Figure 7: Multi-Model Performance Benchmark across Five Candidate Machine Learning Algorithms
+![Figure 7: Multi-Model Benchmark Comparison](figures/fig3_model_benchmark_comparison.png)
+*Caption: Figure 7 provides a comprehensive comparative evaluation across the five benchmarked algorithms. Tree-based ensembles (Random Forest, Extra Trees) demonstrate decisive superiority over distance (KNN) and linear hyperplanes (Logistic Regression) across Micro F1, Jaccard IoU, and Zero-Crop Rejection.*
+
 ---
 
 ### 7.4 Agronomic & Theoretical Analysis of Results
+
+### 🖼️ Figure 8: Champion Random Forest Multi-Label Performance Metric Hierarchy
+![Figure 8: Champion Metric Hierarchy](figures/fig4_champion_metric_hierarchy.png)
+*Caption: Figure 8 illustrates the performance metric hierarchy of the champion tuned Random Forest model, contrasting label-based Hamming Accuracy (98.11%) and sample-based Jaccard IoU (89.21%) against the strict all-or-nothing Subset Exact Match (48.18%).*
 
 #### Why Random Forest is the Definitive Champion
 1. **Flawless Zero-Crop Rejection (100.00%):** In agricultural advisory, false recommendations under uncultivable conditions lead directly to wasted capital. While Extra Trees hallucinated crops on 2.03% of negative strata and KNN hallucinated on 13.20%, Random Forest achieved 100.00% true-negative rejection.
