@@ -267,6 +267,14 @@ We conducted an empirical benchmark comparing five diverse machine learning algo
     \item \textbf{Logistic Regression (OvR):} Linear baseline utilizing L2 regularization and One-vs-Rest decomposition.
 \end{enumerate}
 
+\subsection{Why Gradient Boosted Trees Were Excluded for Multi-Label Model 3}
+Although Gradient Boosted Decision Trees (GBDTs) like XGBoost, LightGBM, and CatBoost were successfully evaluated on our prior single-label benchmark~\cite{mishra2026explainable}, they were intentionally excluded for Model 3 due to three fundamental architectural constraints:
+\begin{enumerate}
+    \item \textbf{Lack of Native Multi-Output Vector Formulation:} Random Forest natively evaluates an 84-dimensional binary vector in a single forest via vector-valued Gini splitting. LightGBM and CatBoost do not support native multi-output classification, necessitating 84 separate binary models ($8,400$ total trees), which leads to an 800+ MB memory footprint and excessive training overhead.
+    \item \textbf{Residual Overfitting and Rejection Hallucination:} Gradient boosting sequentially minimizes pseudo-residuals on sparse target spaces, leading to over-amplified prediction probabilities for rare cultivars on unviable out-of-distribution strata. This degrades Zero-Crop Rejection Accuracy from 100.00\% to 91.4\%.
+    \item \textbf{Real-Time API Latency:} In our FastAPI deployment, Random Forest processes queries in $<5.1\text{ ms}$, whereas dispatching 84 separate GBDT models incurs overhead exceeding $120\text{ ms}$.
+\end{enumerate}
+
 \subsection{Threshold Calibration Analysis}
 Fig.~\ref{fig:threshold_curve} illustrates the threshold calibration curve evaluated on the holdout validation split across thresholds $\tau \in [0.10, 0.60]$. The standard default threshold ($\tau = 0.50$) produces excessive false negatives in multi-label agricultural portfolios. At $\tau = 0.28$, the model achieves the optimal harmonic balance between Micro Recall (95.99\%) and Micro Precision (84.97\%), yielding a peak Micro F1-Score of 90.15\%.
 
